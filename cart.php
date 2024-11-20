@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
+    <?php include "menu.php" ?>
     <!--Tabla con datos del carrito: productos, precio, cantidad, subtotal y total-->
     <!--Botón para vaciar el carrito-->
     <!--Botones para subir o bajar la cantidad de cada producto-->
