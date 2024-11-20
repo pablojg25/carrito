@@ -1,22 +1,18 @@
 <?php
+    session_start();
     require "queries/connection.php";
     require "queries/idSelect.php";
     
-    $id = $_REQUEST['add'] ?? 0;
-
-    
+    $id = $_REQUEST['add'] ?? null;
 
     if (isset($_REQUEST['order'])) {
         setcookie("order",$_REQUEST['order']);
     }
     if (isset($id) && in_array($id,$ids)) {
-        session_start();
         if (isset($_SESSION['cart'][$id])) {
             $_SESSION['cart'][$id] ++;
-            print_r($_SESSION);
         } else {
             $_SESSION['cart'][$id] = 1;
-            print_r($_SESSION);
         }
     }
 ?>
@@ -29,7 +25,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <?php include "menu.php" ?>
+    <?php
+    include "menu.php";
+    ?>
     <!--Mostrar productos-->
     <!--Tabla: THs permiten ordenar tabla, orden seleccionado se guarda-->
     <!--Botón añadir a carrito para cada producto, o aumentar la cantidad si ya está añadido-->

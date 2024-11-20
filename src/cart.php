@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +10,10 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <?php include "menu.php" ?>
+    <?php
+    include "menu.php";
+    print_r($_SESSION['cart']);
+    ?>
     <!--Tabla con datos del carrito: productos, precio, cantidad, subtotal y total-->
     <!--Botón para vaciar el carrito-->
     <!--Botones para subir o bajar la cantidad de cada producto-->
