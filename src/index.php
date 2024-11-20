@@ -15,11 +15,18 @@
     <table>
         <thead>
             <tr>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Cantidad</th>
+                <th><a href="index.php?order=name">Nombre</a></th>
+                <th><a href="index.php?order=price">Precio</a></th>
+                <th><a href="index.php?order=amount">Cantidad</a></th>
+                <th>Carrito</th>
             </tr>
         </thead>
+        <tbody>
+            <?php
+                require "queries/connection.php";
+                require "queries/productSelect.php";
+            ?>
+        </tbody>
     </table>
 </body>
 </html>
