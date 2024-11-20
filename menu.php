@@ -1,4 +1,4 @@
 <?php
 
-echo '<a href="index.php">Productos</a>';
-echo '<a href="cart.php">Carrito</a>';
+echo '<nav><li><a href="index.php">Productos</a></li>';
+echo '<li><a href="cart.php">Carrito</a></li></nav>';
