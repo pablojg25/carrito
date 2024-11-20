@@ -1,6 +1,23 @@
 <?php
+    require "queries/connection.php";
+    require "queries/idSelect.php";
+    
+    $id = $_REQUEST['add'] ?? 0;
+
+    
+
     if (isset($_REQUEST['order'])) {
         setcookie("order",$_REQUEST['order']);
+    }
+    if (isset($id) && in_array($id,$ids)) {
+        session_start();
+        if (isset($_SESSION['cart'][$id])) {
+            $_SESSION['cart'][$id] ++;
+            print_r($_SESSION);
+        } else {
+            $_SESSION['cart'][$id] = 1;
+            print_r($_SESSION);
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -28,7 +45,7 @@
         </thead>
         <tbody>
             <?php
-                require "queries/connection.php";
+                require_once "queries/connection.php";
                 require "queries/productSelect.php";
             ?>
         </tbody>
