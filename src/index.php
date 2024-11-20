@@ -1,3 +1,8 @@
+<?php
+    if (isset($_REQUEST['order'])) {
+        setcookie("order",$_REQUEST['order']);
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
