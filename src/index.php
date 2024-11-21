@@ -6,11 +6,14 @@
     $id = $_REQUEST['add'] ?? null;
 
     if (isset($_REQUEST['order'])) {
-        setcookie("order",$_REQUEST['order']);
+        setcookie("order",$_REQUEST['order'],time() + 100000);
     }
     if (isset($id) && in_array($id,$ids)) {
+        require "queries/checkAmount.php";
         if (isset($_SESSION['cart'][$id])) {
-            $_SESSION['cart'][$id] ++;
+            if ($_SESSION['cart'][$id] < $max) {
+                $_SESSION['cart'][$id]++;
+            }
         } else {
             $_SESSION['cart'][$id] = 1;
         }
