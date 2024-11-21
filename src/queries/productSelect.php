@@ -1,11 +1,9 @@
 <?php
 
-//if para comprobar si hay orden seleccionado, por defecto se ordena por ID
-
 if (isset($_REQUEST['order'])) {
 
     $order = $_REQUEST['order'];
-    $stmtProductSelect = $conn->prepare("SELECT * FROM products ORDER BY $order"); //No funciono con bindParam
+    $stmtProductSelect = $conn->prepare("SELECT * FROM products ORDER BY $order"); //No funciona con bindParam
     $stmtProductSelect->execute();
     $products = $stmtProductSelect->fetchAll(PDO::FETCH_OBJ);
     foreach ($products as $product) {
@@ -13,7 +11,7 @@ if (isset($_REQUEST['order'])) {
     }
 } elseif ($_COOKIE['order']) {
     $order = $_COOKIE['order'];
-    $stmtProductSelect = $conn->prepare("SELECT * FROM products ORDER BY $order"); //No funciono con bindParam
+    $stmtProductSelect = $conn->prepare("SELECT * FROM products ORDER BY $order"); //No funciona con bindParam
     $stmtProductSelect->execute();
     $products = $stmtProductSelect->fetchAll(PDO::FETCH_OBJ);
     foreach ($products as $product) {
