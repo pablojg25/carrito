@@ -6,7 +6,7 @@
     $id = $_REQUEST['add'] ?? null;
 
     if (isset($_REQUEST['order'])) {
-        setcookie("order",$_REQUEST['order'],time() + 100000);
+        setcookie("order",$_REQUEST['order'],time() + 86400);
     }
     if (isset($id) && in_array($id,$ids)) {
         require "queries/checkAmount.php";
