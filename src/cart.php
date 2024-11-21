@@ -38,10 +38,6 @@ if (isset($_REQUEST['remove'])) {
     include "menu.php";
     if (count($_SESSION['cart']) != 0) {
     ?>
-    <!--Tabla con datos del carrito: productos, precio, cantidad, subtotal y total-->
-    <!--Botón para vaciar el carrito-->
-    <!--Botones para subir o bajar la cantidad de cada producto-->
-    <!--Si la cantidad llega a 0, se borra la línea-->
     <table>
         <thead>
             <tr>
