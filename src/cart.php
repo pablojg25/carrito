@@ -66,7 +66,7 @@ if (isset($_SESSION['cart']) && count($_SESSION['cart']) != 0) {
     </table>
     <a href="cart.php?clear="><button>Vaciar carrito</button></a>
     <?php } else { ?>
-        <div><h1>ERROR</h1><p>No hay ningún producto en el carrito</p></div>
+        <div class="error"><h1>ERROR</h1><p>No hay ningún producto en el carrito</p></div>
     <?php } ?>
 </body>
 </html>

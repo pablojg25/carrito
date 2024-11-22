@@ -14,7 +14,7 @@
             if ($_SESSION['cart'][$id] < $max) {
                 $_SESSION['cart'][$id]++;
             } else {
-                echo "<div><h1>ERROR</h1><p>No hay más stock para el producto</p></div>";
+                echo '<div class="error"><h1>ERROR</h1><p>No hay más stock para el producto</p></div>';
             }
         } else {
             if (1 <= $max) {
