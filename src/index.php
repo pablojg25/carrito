@@ -37,6 +37,7 @@
     <?php
     include "menu.php";
     ?>
+    <h1>Productos</h1>
     <table>
         <thead>
             <tr>
