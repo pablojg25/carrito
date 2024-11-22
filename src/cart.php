@@ -2,27 +2,30 @@
 session_start();
 require "queries/connection.php";
 
-if (isset($_REQUEST['clear'])) {
-    foreach ($_SESSION['cart'] as $key => $item) {
-        unset($_SESSION['cart'][$key]);
+if (isset($_SESSION['cart']) && count($_SESSION['cart']) != 0) {
+    if (isset($_REQUEST['clear'])) {
+        foreach ($_SESSION['cart'] as $key => $item) {
+            unset($_SESSION['cart'][$key]);
+        }
+    }
+    
+    if (isset($_REQUEST['remove'])) {
+        $id = $_REQUEST['remove'];
+        $_SESSION['cart'][$id]--;
+        if ($_SESSION['cart'][$id] == 0) {
+            unset($_SESSION['cart'][$id]);
+        }
+    } else if (isset($_REQUEST['add'])) {
+        $id = $_REQUEST['add'];
+        require "queries/checkAmount.php";
+        if ($_SESSION['cart'][$id] < $max) {
+            $_SESSION['cart'][$id]++;
+        } else {
+            echo '<div class="error"><h1>ERROR</h1><p>No hay más stock para el producto</p></div>';
+        }
     }
 }
 
-if (isset($_REQUEST['remove'])) {
-    $id = $_REQUEST['remove'];
-    $_SESSION['cart'][$id]--;
-    if ($_SESSION['cart'][$id] == 0) {
-        unset($_SESSION['cart'][$id]);
-    }
-} else if (isset($_REQUEST['add'])) {
-    $id = $_REQUEST['add'];
-    require "queries/checkAmount.php";
-    if ($_SESSION['cart'][$id] < $max) {
-        $_SESSION['cart'][$id]++;
-    } else {
-        echo '<div class="error"><h1>ERROR</h1><p>No hay más stock para el producto</p></div>';
-    }
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +38,7 @@ if (isset($_REQUEST['remove'])) {
 <body>
     <?php
     include "menu.php";
-    if (count($_SESSION['cart']) != 0) {
+    if (isset($_SESSION['cart']) && count($_SESSION['cart']) != 0) {
     ?>
     <table>
         <thead>
